@@ -29,8 +29,8 @@ class Argos3 < Formula
     mkdir "build_simulator"
     cd "build_simulator"
     system "cmake", "../src", "-DCMAKE_BUILD_TYPE=Release", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DARGOS_BUILD_NATIVE=ON", "-DCPACK_PACKAGE_VERSION_MAJOR=#{VERSION_MAJOR}", "-DCPACK_PACKAGE_VERSION_MINOR=#{VERSION_MINOR}", "-DCPACK_PACKAGE_VERSION_PATCH=#{VERSION_PATCH}", "-DCPACK_PACKAGE_RELEASE=#{VERSION_RELEASE}", "-DARGOS_BREW_QT_CELLAR=#{HOMEBREW_PREFIX}/Cellar/qt"
-    system "make"
-    system "make doc"
+    system "cmake --build . --target all --parallel"
+    system "cmake --build . --target doc --parallel"
     system "make install"
   end
 
